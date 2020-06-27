@@ -14,12 +14,12 @@ function timeOneDay() { //generates strings of the indivdual hours based off of 
     } makeBlx();
 }
 
-function renderLastEntry() {
-    var textarea = localStorage.getItem(time[i], textarea);
-    if (!textarea) {
-        return;
-    }
-}
+// function renderLastEntry() {
+//     var textarea = localStorage.getItem(time[i], textarea);
+//     if (!texta) {
+//         return;
+//     }
+// }
 
 function makeBlx() {
 
@@ -41,26 +41,34 @@ function makeBlx() {
         hrCols.appendChild(textarea)
         hrCols.appendChild(saveBtn)
 
+        if(!localStorage.getItem(hrCols.textContent)){
+            localStorage.setItem(hrCols.textContent, "")
+        }
+        else{
+            var todo = localStorage.getItem(hrCols.textContent);
+            textarea.value = todo; 
+        };
+
         if (parseInt(hrColTxt) === currentHour) {
             textarea.setAttribute("class", "hour present col-8")
         }
         if (parseInt(hrColTxt) < currentHour) {
             textarea.setAttribute("class", "hour past col-8")
         }
-
+        
+        saveBtn.addEventListener("click", function (event) {
+            event.preventDefault();
+        
+        //  var siblings = Array.from(event.target.parentNode.children);
+        //  var index = siblings.indexOf(event.target);
+         var hour = event.target.parentNode.textContent;
+         var textarea = event.target.previousSibling;
+         var text = textarea.value;
+         if (text === "") {
+            alert("must add text to save")
+          }
+         localStorage.setItem(hour, text);
+        //  renderLastEntry();
+         });
     };
 }
-// saveBtn.addEventListener("click", function (event) {
-//     event.preventDefault();
-
-
-//  var index = event.target.parentNode.children[i]
-//  var hour = event.target.parentNode.children[hour - 2];
-//  var textarea = event.target.parentNode.children[hour - 1];
-//  var textarea = event.target.parentNode.children[i].textContent;
-//  if (textarea === "") {
-//     alert("must add text to save")
-//   }
-//  localStorage.setItem(hour, textarea);
-//  renderLastEntry();
-//  });
