@@ -21,23 +21,6 @@
 
    
 
-    good w4:
-    act 4- that were set attr loop
-    act 10- light/dark toggle
-    act 11- on clicks
-    act 13- query selectors and multiple function example
-    act 18- using button to save event
-    act 19- using button to save typed event 
-    act 21- saving to local
-    act 22- saving to local
-    act 23- saving to local
-    act 24- state changes data attr
-    
-    bad w4:
-    act 1-3
-    act 5-9
-    act 12
-    act 14-17
 
     
 
