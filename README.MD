@@ -1,6 +1,10 @@
+        
 
+*   A hourly daily planner.
+    Displays current date and time
+    Allows user to save and edit timeblocks by the hour 
+    
 
-* 
     <!-- 
     Display current DAY at the top of calendar
     Set timeblocks for each hour in the day:
@@ -14,10 +18,10 @@
     SET class to "present"
     IF timeblock value comes before current time in time array
     SET class to "past"
-    -->
     ON CLICK save button:
     SAVES user input in textarea
     STORES user input to local storage
+    -->
 
    
 

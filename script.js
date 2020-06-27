@@ -14,13 +14,6 @@ function timeOneDay() { //generates strings of the indivdual hours based off of 
     } makeBlx();
 }
 
-// function renderLastEntry() {
-//     var textarea = localStorage.getItem(time[i], textarea);
-//     if (!texta) {
-//         return;
-//     }
-// }
-
 function makeBlx() {
 
     for (var i = 0; i < time.length - 1; i++) { //Loops through length of time array 
@@ -54,21 +47,20 @@ function makeBlx() {
         }
         if (parseInt(hrColTxt) < currentHour) {
             textarea.setAttribute("class", "hour past col-8")
+           
         }
         
         saveBtn.addEventListener("click", function (event) {
             event.preventDefault();
         
-        //  var siblings = Array.from(event.target.parentNode.children);
-        //  var index = siblings.indexOf(event.target);
          var hour = event.target.parentNode.textContent;
          var textarea = event.target.previousSibling;
          var text = textarea.value;
-         if (text === "") {
+         if (text == "") {
             alert("must add text to save")
           }
          localStorage.setItem(hour, text);
-        //  renderLastEntry();
+
          });
     };
 }
