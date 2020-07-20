@@ -28,16 +28,16 @@ function makeBlx() {
         saveBtn.textContent = "Save";//sets starting text of button
         clrBtn.textContent = "Clear";
         rowCon.setAttribute("class", "row time-block")
-        hrCols.setAttribute("class", "col-1 hour");
-        textarea.setAttribute("class", "col-9 future description");
-        saveBtn.setAttribute("class", "col-1 saveBtn ");
-        clrBtn.setAttribute("class", "col-1 clrBtn" )
+        hrCols.setAttribute("class", "col hour");
+        textarea.setAttribute("class", " col-9  future description");
+        saveBtn.setAttribute("class", "col saveBtn ");
+        clrBtn.setAttribute("class", "col clrBtn" )
 
         container.appendChild(rowCon);
+        rowCon.appendChild(clrBtn);
         rowCon.appendChild(hrCols);
         rowCon.appendChild(textarea);
         rowCon.appendChild(saveBtn);
-        rowCon.appendChild(clrBtn);
 
         
         if(!localStorage.getItem(hrCols.textContent)){
@@ -49,10 +49,10 @@ function makeBlx() {
         };
 
         if (hrColTxt === currentHour ) {
-            textarea.setAttribute("class", "col-9 present description")
+            textarea.setAttribute("class", "col-9  present description")
         }
         if ((hrColTxt) < currentHour) {
-            textarea.setAttribute("class", "col-9 past description")
+            textarea.setAttribute("class", "col-9  past description")
            
         }
         

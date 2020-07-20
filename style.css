@@ -26,7 +26,7 @@ body {
   
   .container{
     padding-bottom: 2rem;
-    margin: 0 auto;
+    margin: 0 auto
   }
   .description{
     white-space: pre-wrap;
@@ -69,14 +69,16 @@ body {
   
   .saveBtn {
     border-left: 1px solid black;
-    background-color: #06AED5;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: steelblue;
     color: white;
   }
   .clrBtn {
-    border-left: 1px solid black;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background-color: springgreen;
+    border-right: 1px solid black;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: teal ;
     color: white;
   }
   
