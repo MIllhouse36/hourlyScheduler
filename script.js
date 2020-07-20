@@ -23,18 +23,22 @@ function makeBlx() {
         var hrCols = document.createElement("div");//creates column that holds hours
         var textarea = document.createElement("textarea");//creates textarea element
         var saveBtn = document.createElement("button");//creates save button
-
+        var clrBtn = document.createElement("button");
         hrCols.textContent = hrColTxt;//sets the textcontent of hrCols div to index string corresponding to hrColTxt
         saveBtn.textContent = "Save";//sets starting text of button
+        clrBtn.textContent = "Clear";
         rowCon.setAttribute("class", "row time-block")
         hrCols.setAttribute("class", "col-1 hour");
-        textarea.setAttribute("class", "col-10 future description");
+        textarea.setAttribute("class", "col-9 future description");
         saveBtn.setAttribute("class", "col-1 saveBtn ");
+        clrBtn.setAttribute("class", "col-1 clrBtn" )
 
-        container.appendChild(rowCon)
-        rowCon.appendChild(hrCols)
-        rowCon.appendChild(textarea)
-        rowCon.appendChild(saveBtn)
+        container.appendChild(rowCon);
+        rowCon.appendChild(hrCols);
+        rowCon.appendChild(textarea);
+        rowCon.appendChild(saveBtn);
+        rowCon.appendChild(clrBtn);
+
         
         if(!localStorage.getItem(hrCols.textContent)){
             localStorage.setItem(hrCols.textContent, "")
@@ -45,10 +49,10 @@ function makeBlx() {
         };
 
         if (hrColTxt === currentHour ) {
-            textarea.setAttribute("class", "col-10 present description")
+            textarea.setAttribute("class", "col-9 present description")
         }
         if ((hrColTxt) < currentHour) {
-            textarea.setAttribute("class", "col-10 past description")
+            textarea.setAttribute("class", "col-9 past description")
            
         }
         
