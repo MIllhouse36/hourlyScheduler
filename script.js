@@ -1,15 +1,15 @@
 var container = document.querySelector(".container");
 var currentDay = document.getElementById("currentDay");
-var currentHour = parseInt(moment().startOf("hour").format("H:mm"));
+var currentHour = (moment().startOf("hour").format("ha"));
 var time = [];
 var saveBtn = document.querySelector(".saveBtn");
 currentDay.textContent = moment().format("dddd, MMMM Do, YYYY");
-
+console.log(currentHour)
 timeOneDay();
 
 function timeOneDay() { //generates strings of the indivdual hours based off of the start of the day and pushes them into an array
-    for (i = 0; i < 19; i++) {
-        var formattedTime = moment().startOf("day").add(i, "hours").format("H:mm");
+    for (i = 0; i < 25; i++) {
+        var formattedTime = moment().startOf("day").add(i, "hours").format("ha");
         time.push(formattedTime);
     } makeBlx();
 }
@@ -17,23 +17,25 @@ function timeOneDay() { //generates strings of the indivdual hours based off of 
 function makeBlx() {
 
     for (var i = 0; i < time.length - 1; i++) { //Loops through length of time array 
-    
+        
         var hrColTxt = time[i];// sets the value of hrColTxt to the string corresponding to the index value in the array being looped through
+        var rowCon = document.createElement("div");
         var hrCols = document.createElement("div");//creates column that holds hours
         var textarea = document.createElement("textarea");//creates textarea element
         var saveBtn = document.createElement("button");//creates save button
 
         hrCols.textContent = hrColTxt;//sets the textcontent of hrCols div to index string corresponding to hrColTxt
         saveBtn.textContent = "Save";//sets starting text of button
+        rowCon.setAttribute("class", "row time-block")
+        hrCols.setAttribute("class", "col-1 hour");
+        textarea.setAttribute("class", "col-10 future description");
+        saveBtn.setAttribute("class", "col-1 saveBtn ");
 
-        hrCols.setAttribute("class", "row justify-content-center ");
-        textarea.setAttribute("class", "hour future col-8 ");
-        saveBtn.setAttribute("class", "saveBtn ");
-
-        container.appendChild(hrCols)
-        hrCols.appendChild(textarea)
-        hrCols.appendChild(saveBtn)
-
+        container.appendChild(rowCon)
+        rowCon.appendChild(hrCols)
+        rowCon.appendChild(textarea)
+        rowCon.appendChild(saveBtn)
+        
         if(!localStorage.getItem(hrCols.textContent)){
             localStorage.setItem(hrCols.textContent, "")
         }
@@ -42,11 +44,11 @@ function makeBlx() {
             textarea.value = todo; 
         };
 
-        if (parseInt(hrColTxt) === currentHour) {
-            textarea.setAttribute("class", "hour present col-8")
+        if (hrColTxt === currentHour ) {
+            textarea.setAttribute("class", "col-10 present description")
         }
-        if (parseInt(hrColTxt) < currentHour) {
-            textarea.setAttribute("class", "hour past col-8")
+        if ((hrColTxt) < currentHour) {
+            textarea.setAttribute("class", "col-10 past description")
            
         }
         
