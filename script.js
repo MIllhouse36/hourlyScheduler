@@ -1,9 +1,9 @@
 var container = document.querySelector(".container");
-var currentDay = document.getElementById("currentDay");
+var date = document.getElementById("currentDay");
 var currentHour = (moment().startOf("hour").format("ha"));
 var time = [];
 var saveBtn = document.querySelector(".saveBtn");
-currentDay.textContent = moment().format("dddd, MMMM Do, YYYY");
+date.textContent = moment().format("dddd, MMMM Do, YYYY");
 console.log(currentHour)
 timeOneDay();
 
@@ -27,16 +27,16 @@ function makeBlx() {
         hrCols.textContent = hrColTxt;//sets the textcontent of hrCols div to index string corresponding to hrColTxt
         saveBtn.textContent = "Save";//sets starting text of button
         clrBtn.textContent = "Clear";
-        rowCon.setAttribute("class", "row time-block")
+        rowCon.setAttribute("class", "row time-block mb-5")
         hrCols.setAttribute("class", "col hour");
-        textarea.setAttribute("class", " col-9  future description");
-        saveBtn.setAttribute("class", "col saveBtn ");
-        clrBtn.setAttribute("class", "col clrBtn" )
+        textarea.setAttribute("class", "col-9  future description");
+        saveBtn.setAttribute("class", "col  saveBtn ");
+        clrBtn.setAttribute("class", "col  clrBtn" )
 
         container.appendChild(rowCon);
-        rowCon.appendChild(clrBtn);
         rowCon.appendChild(hrCols);
         rowCon.appendChild(textarea);
+        rowCon.appendChild(clrBtn);
         rowCon.appendChild(saveBtn);
 
         
