@@ -30,7 +30,7 @@ body {
   }
   .description{
     white-space: pre-wrap;
-    border-top: 1px dashed #000000;
+    
   }
   
   .time-block{
@@ -55,7 +55,7 @@ body {
   }
   
   .past {
-    background-color: #fddefba2;
+    background-color: #0b006d56;
    
   }
   
