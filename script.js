@@ -2,14 +2,15 @@ var container = document.querySelector(".container");
 var saveBtn = document.querySelector(".saveBtn");
 var current = moment().hour();
 var date = document.getElementById("currentDay");
-
 date.textContent = moment().format("dddd, MMMM Do, YYYY");
-
+let rids = [];
+let keys = [];
 timeOneDay();
 
 function timeOneDay() {
   for (i = 0; i < 24; i++) {
     var hours = moment().startOf("day").add(i, "hours").format("H");
+   // console.log(hours) ***
     var formattedTime = moment()
       .startOf("day")
       .add(i, "hours")
@@ -43,21 +44,35 @@ function timeOneDay() {
 
     if (parseInt(rowId) < current) {
       textarea.setAttribute("class", "col-9  past description");
-    } else if (parseInt(rowCon.id) > current) {
+    } else if (parseInt(rowId) > current) {
       textarea.setAttribute("class", "col-9  future description");
     }
-
-    saveBtn.addEventListener("click", function (event) {
-      event.preventDefault();
-      var textarea = event.target.previousSibling;
-      var hour = textarea.previousSibling.textContent;
-      var row = event.target.parentNode;
-      console.log(row.id);
-      var text = textarea.value;
-      if (text == "") {
-        alert("must add text to save");
-      }
-      localStorage.setItem(hour, text);
-    });
+    rids.push(rowId)
   }
+
+  saveBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    var textarea = event.target.previousSibling;
+    var hour = textarea.previousSibling.textContent;
+    var row = event.target.parentNode;
+    // console.log(row.id);
+    var text = textarea.value;
+    if (text === "") {
+      alert("must add text to save");
+    }
+    localStorage.setItem(hour, text);
+  });
+
+
+  // **** console.log(rids)
+  for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+    // console.log(localStorage.key(i))
+    const jawns = (localStorage.key( i ).slice(0, localStorage.key.length -3)) ;
+    // console.log(jawns)
+
+  }
+   
 }
+
+
+
