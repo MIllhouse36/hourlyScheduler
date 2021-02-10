@@ -1,78 +1,84 @@
-var container = document.querySelector(".container");
-var saveBtn = document.querySelector(".saveBtn");
-var current = moment().hour();
-var date = document.getElementById("currentDay");
-date.textContent = moment().format("dddd, MMMM Do, YYYY");
-let rids = [];
+const cntr = document.querySelector(".container");
+const current = moment().hour();
+const date = document.getElementById("currentDay");
 let keys = [];
-timeOneDay();
+date.textContent = moment().format("dddd, MMMM Do, YYYY");
 
+timeOneDay();
 function timeOneDay() {
-  for (i = 0; i < 24; i++) {
-    var hours = moment().startOf("day").add(i, "hours").format("H");
-   // console.log(hours) ***
-    var formattedTime = moment()
+  for (let i = 0; i < 24; i++) {
+    const hrs = moment().startOf("day").add(i, "hours").format("H");
+    let formattedTime = moment()
       .startOf("day")
       .add(i, "hours")
       .format("ha")
       .toString();
-    var hrColTxt = formattedTime; // sets the value of hrColTxt to the string corresponding to the index value in the array being looped through
-    var rowCon = document.createElement("div");
-    var clrBtn = document.createElement("button");
-    var hrCols = document.createElement("div"); //creates column for hour text
-    var textarea = document.createElement("textarea"); //creates textarea element
-    var saveBtn = document.createElement("button"); //creates save button
-    var rowId;
 
-    rowCon.setAttribute("id", hours);
-    rowCon.setAttribute("class", "row time-block");
-    rowId = rowCon.getAttribute("id");
+    keys.push(formattedTime);
+
+    const row = document.createElement("div");
+    const clrBtn = document.createElement("button");
+    const hrCols = document.createElement("div"); //creates column for hour text
+    const textarea = document.createElement("textarea"); //creates textarea element
+    const saveBtn = document.createElement("button"); //creates save button
+
+    row.setAttribute("id", hrs);
+    row.setAttribute("class", "row time-block");
+
     clrBtn.setAttribute("class", "col  clrBtn");
     hrCols.setAttribute("class", "col hour");
     textarea.setAttribute("class", "col-9  present description");
+    textarea.setAttribute("id", formattedTime);
     saveBtn.setAttribute("class", "col  saveBtn ");
 
     clrBtn.textContent = "Clear";
     saveBtn.textContent = "Save";
-    hrCols.textContent = hrColTxt;
+    hrCols.textContent = formattedTime;
 
-    container.appendChild(rowCon);
-    rowCon.appendChild(clrBtn);
-    rowCon.appendChild(hrCols);
-    rowCon.appendChild(textarea);
-    rowCon.appendChild(saveBtn);
+    cntr.appendChild(row);
+    row.appendChild(clrBtn);
+    row.appendChild(hrCols);
+    row.appendChild(textarea);
+    row.appendChild(saveBtn);
 
+    let rowId = row.getAttribute("id");
     if (parseInt(rowId) < current) {
       textarea.setAttribute("class", "col-9  past description");
     } else if (parseInt(rowId) > current) {
       textarea.setAttribute("class", "col-9  future description");
     }
-    rids.push(rowId)
+
+    saveBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+      const textarea = event.target.previousSibling;
+      console.log(textarea.id);
+      const text = textarea.value;
+      if (text === "") {
+        alert("must add text to save");
+      }
+      localStorage.setItem(textarea.id, text);
+      location.reload();
+    });
+
+    clrBtn.addEventListener("click", function (event) {
+      event.preventDefault();
+      const textarea = event.target.parentNode.childNodes[2];
+      console.log(textarea.id);
+      const text = textarea.value;
+      if (text === "") {
+        alert("must add text to save");
+      }
+      localStorage.removeItem(textarea.id);
+      location.reload();
+    });
   }
 
-  saveBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    var textarea = event.target.previousSibling;
-    var hour = textarea.previousSibling.textContent;
-    var row = event.target.parentNode;
-    // console.log(row.id);
-    var text = textarea.value;
-    if (text === "") {
-      alert("must add text to save");
-    }
-    localStorage.setItem(hour, text);
-  });
-
-
-  // **** console.log(rids)
-  for ( var i = 0, len = localStorage.length; i < len; ++i ) {
-    // console.log(localStorage.key(i))
-    const jawns = (localStorage.key( i ).slice(0, localStorage.key.length -3)) ;
-    // console.log(jawns)
-
-  }
-   
+  getLocal();
 }
 
-
-
+function getLocal() {
+  for (let i = 0, len = keys.length; i < len; ++i) {
+    let row = document.getElementById(keys[i]);
+    row.textContent = localStorage.getItem(row.id);
+  }
+}
