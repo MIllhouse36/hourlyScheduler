@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-  This hourly scheduler allow users to optimize their day by allowing for notetaking by the hour. It also shows you which hours have past, the current hour, and the hours left in the day. 
+  This hourly scheduler allow users to optimize their day by allowing for notetaking by the hour. It also shows you which hours have passed, the current hour, and the hours left in the day. 
 
 ## Usage
 To use this hourly scheduler is first navigate to [the site](https://millhouse36.github.io/hourlyScheduler/). Next, click on the textarea of the time you would like to save a note for, type in your note, hit save, and now your not is saved. if you would like to delete a note there is also a clear button to clear any note for a specific time. There is also restriction set up so users will not be able to make a note on an hour that has already passed. 
