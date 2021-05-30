@@ -10,8 +10,8 @@
 ## Usage
 To use this hourly scheduler is first navigate to [the site](https://millhouse36.github.io/hourlyScheduler/). Next, click on the textarea of the time you would like to save a note for, type in your note, hit save, and now your not is saved. if you would like to delete a note there is also a clear button to clear any note for a specific time. There is also restriction set up so users will not be able to make a note on an hour that has already passed. 
 
-## Contributing to Budget-tracker  
-To contribute to Budget-tracker , follow these steps:
+## Contributing to Hourly-scheduler 
+To contribute to Hourly-scheduler , follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b Hourly-scheduler `.
